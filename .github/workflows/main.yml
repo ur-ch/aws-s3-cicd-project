@@ -1,0 +1,20 @@
+name: Check S3 Website HTML
+on: 
+  push:
+   branches: [main]
+  workflow_dispatch:
+jobs: 
+  check-html: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download website code
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: test -f index.html
+
+      name: Check HTML content
+      run: |
+         grep -qi '<html' index.html
+         grep -qi '</html>' index.html
+         echo "HTML basic checks passed!"

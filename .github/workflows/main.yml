@@ -13,8 +13,8 @@ jobs:
       - name: Check index.html exists
         run: test -f index.html
 
-      name: Check HTML content
-      run: |
+      - name: Check HTML content
+        run: |
          grep -qi '<html' index.html
          grep -qi '</html>' index.html
          echo "HTML basic checks passed!"
